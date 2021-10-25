@@ -22,8 +22,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify sonar:sonar -Dsonar.NozaLeaR_DEVOPS_TP2=devops-2020-Dsonar.nozalear=devops-epf -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{secrets.SONAR_TOKEN }}  --file ./simple-api/pom.xml
-  build-and-push-docker-image:
+        run : mvn -B verify sonar:sonar -Dsonar.projectKey=NozaLeaR_DEVOPS_TP2 -Dsonar.organization=nozalear -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{secrets.SONAR_TOKEN }}  --file ./simple-api/pom.xml  build-and-push-docker-image:
     needs: build-and-test-app
 # run only when code is compiling and tests are passing
     runs-on: ubuntu-latest
